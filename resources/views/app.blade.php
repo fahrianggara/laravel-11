@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial Laravel 11</title>
+    <title>{{ $title ?? 'Tutorial Laravel 11' }}</title>
 
     @livewireStyles
     @livewireScripts

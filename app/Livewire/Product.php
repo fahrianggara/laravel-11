@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Product as ProductModel;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Title;
 
 class Product extends Component
 {
@@ -39,7 +40,7 @@ class Product extends Component
     }
 
     /**
-     * updatedProductName
+     * Update the product
      *
      * @param  mixed $value
      * @return void
@@ -50,17 +51,17 @@ class Product extends Component
     }
 
     /**
-     * openModal
+     * Open the modal for creating or editing a product
      *
      * @return void
      */
     public function open()
     {
-        dd('openModal');
+
     }
 
     /**
-     * closeModal
+     * Close the modal
      *
      * @return void
      */
@@ -70,10 +71,11 @@ class Product extends Component
     }
 
     /**
-     * render
+     * Render the component view
      *
      * @return void
      */
+    #[Title('Produk')]
     public function render()
     {
         return view('livewire.product');
