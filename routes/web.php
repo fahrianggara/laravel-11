@@ -1,10 +1,10 @@
 <?php
 
-use App\Livewire\Product;
+use App\Livewire\Products;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect()->route('products');
 });
 
-Route::get('products', Product::class)->name('products');
+Route::get('products', Products::class)->name('products');
