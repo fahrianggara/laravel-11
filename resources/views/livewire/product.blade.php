@@ -2,9 +2,9 @@
     <div class="w-full">
         <div class="flex flex-col-reverse md:flex-row md:justify-between md:items-center gap-2 mb-4">
             <input type="text" placeholder="Search..." class="border rounded-lg px-4 py-2 md:w-1/2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-lg text-center w-[130px] ml-auto md:ml-0">
+            <button type="button" wire:click="open" class="bg-blue-500 text-white px-4 py-2 rounded-lg text-center w-[130px] ml-auto md:ml-0">
                 Add Product
-            </a>
+            </button>
         </div>
 
         <x-table :headers="['Product name', 'Description', 'Stock', 'Price', 'Image', 'Actions']">
