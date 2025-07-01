@@ -1,7 +1,9 @@
 <div>
     <x-modal id="modal-product" title="Create Product">
-
         <div class="space-y-4">
+            <x-file-upload wire:model="product.image" accept=".jpg,.jpeg,.png"
+                :error="$errors->first('product.image')" :required="true" />
+
             <x-input label="Name" wire:model="product.name" :required="true"
                 placeholder="Enter product name" :error="$errors->first('product.name')" />
 
@@ -10,13 +12,13 @@
 
             <x-input label="Price" type="number" wire:model="product.price" :required="true"
                 placeholder="Enter product prices" :error="$errors->first('product.price')" />
+
+            <x-textarea label="Description" wire:model="product.description" :required="true"
+                placeholder="Enter product description" :error="$errors->first('product.description')" />
         </div>
 
-        <x-slot name="extendedAction">
-            <button type="button" wire:click="submit"
-                class="py-2 px-3 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700">
-                Save changes
-            </button>
+        <x-slot name="actions">
+            <x-button wire:click="submit">Save changes</x-button>
         </x-slot>
     </x-modal>
 
@@ -27,13 +29,8 @@
                 keyboard: false,
             });
 
-            Livewire.on('modal:show', () => {
-                modalEvent.show();
-            });
-
-            Livewire.on('modal:hide', () => {
-                modalEvent.hide();
-            });
+            Livewire.on('modal:show', () => { modalEvent.show() });
+            Livewire.on('modal:hide', () => { modalEvent.hide() });
         </script>
     @endscript
 </div>

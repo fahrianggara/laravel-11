@@ -1,5 +1,5 @@
 <div id="{{ $id }}"
-    class="hidden size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto bg-black/40 transition-opacity"
+    class=" size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto bg-black/40 transition-opacity"
     role="dialog" tabindex="-1" aria-labelledby="{{ $id }}-label" wire:ignore.self>
 
     <div class="{{ $size }} m-3 min-h-[calc(100%-56px)] flex items-center">
@@ -23,8 +23,8 @@
                     <x-text-loading :text="$closeText" color="text-[#000]" />
                 </button>
 
-                @isset($extendedAction)
-                    {{ $extendedAction }}
+                @isset($actions)
+                    {{ $actions }}
                 @endisset
             </div>
         </div>
