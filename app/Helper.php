@@ -15,6 +15,23 @@ if (!function_exists('checkFile')) {
     }
 }
 
+if (!function_exists('deleteFile')) {
+    /**
+     * Check if file exists
+     *
+     * @param  string $file
+     * @return bool
+     */
+    function deleteFile($file)
+    {
+        if (checkFile($file)) {
+            return Storage::disk('public')->delete($file);
+        }
+
+        return false;
+    }
+}
+
 if (!function_exists('getFile')) {
     /**
      * Get the file path for a given file.

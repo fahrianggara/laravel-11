@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Modal;
 
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
 class ProductModal extends Component
@@ -18,6 +20,23 @@ class ProductModal extends Component
     public $price;
     public $stock;
     public $image;
+    public $oldImage; // For delete on change image
+
+    /**
+     * Mount the component with optional product data.
+     *
+     * @return void
+     */
+
+    public function updatedImage()
+    {
+        // remove old image previously uploaded
+        if ($this->oldImage && $this->oldImage instanceof TemporaryUploadedFile) {
+            deleteFile("livewire-tmp/{$this->oldImage->getFilename()}");
+        }
+
+        $this->oldImage = $this->image;
+    }
 
     /**
      * Rules for product validation.
@@ -74,6 +93,11 @@ class ProductModal extends Component
      */
     public function close()
     {
+        // Hapus file temporary saat ini jika ada
+        if ($this->image instanceof TemporaryUploadedFile) {
+            deleteFile("livewire-tmp/{$this->image->getFilename()}");
+        }
+
         $this->reset([
             'editing',
             'product_id',
@@ -83,6 +107,7 @@ class ProductModal extends Component
             'price',
             'stock',
             'image',
+            'oldImage',
         ]);
 
         $this->resetErrorBag();

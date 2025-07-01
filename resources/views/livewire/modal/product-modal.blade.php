@@ -4,7 +4,7 @@
     $title = $editing ? 'Edit Product' : 'Create Product';
     $required = $editing ? false : true;
     $src = (is_string($image) ? getFile($image) : $image)
-        ? Storage::disk('public')->url("livewire-tmp/{$image->getFilename()}")
+        ? getFile("livewire-tmp/{$image->getFilename()}")
         : null;
 @endphp
 
