@@ -29,7 +29,8 @@
             <div class="flex justify-end gap-x-2 py-3 px-4 border-t border-gray-200 dark:border-neutral-700">
                 <button type="button" wire:click="{{ $closeEvent }}"
                     class="py-2 px-3 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 dark:bg-neutral-800 dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700">
-                    {{ $closeText }}
+
+                    <x-text-loading :text="$closeText" color="text-[#000]" />
                 </button>
 
                 @isset($extendedAction)
