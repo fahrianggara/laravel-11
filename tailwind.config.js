@@ -10,6 +10,8 @@ export default {
         './resources/**/*.vue',
         'node_modules/preline/dist/*.js',
         './public/**/*.js',
+        './app/Http/Livewire/**/*.php',
+        './app/View/Components/**/*.php',
     ],
     theme: {
         extend: {

@@ -26,10 +26,8 @@ class Modal {
         this.modal.style.animationDuration = `${this.options.duration}ms`;
         this.modal.style.pointerEvents = 'none';
 
-        setTimeout(() => {
-            this.modal.classList.add('hidden');
-            this._removeBackdrop();
-        }, this.options.duration);
+        this.modal.classList.add('hidden');
+        this._removeBackdrop();
     }
 
     _createBackdrop() {
