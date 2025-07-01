@@ -9,16 +9,6 @@
                     <h3 id="{{ $id }}-label" class="font-bold text-gray-800 dark:text-white">
                         {{ $title }}
                     </h3>
-                    <button type="button" wire:click="{{ $closeEvent }}"
-                        class="size-8 inline-flex justify-center items-center rounded-lg bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-400"
-                        aria-label="Close">
-                        <span class="sr-only">Close</span>
-                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                            <path d="M18 6 6 18"></path>
-                            <path d="m6 6 12 12"></path>
-                        </svg>
-                    </button>
                 </div>
             @endif
 

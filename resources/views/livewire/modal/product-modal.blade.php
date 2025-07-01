@@ -1,31 +1,15 @@
 <div>
-    <x-modal id="modal-product" title="Product Details">
+    <x-modal id="modal-product" title="Create Product">
 
         <div class="space-y-4">
-            <div>
-                <label for="name" class="block text-sm font-medium mb-2 dark:text-white required">
-                    Product Name
-                </label>
+            <x-input label="Name" wire:model="product.name" :required="true"
+                placeholder="Enter product name" :error="$errors->first('product.name')" />
 
-                <div class="relative">
-                    <input type="text" id="name" name="name"
-                        class="py-2.5 sm:py-3 px-4 block w-full border outline-none focus:ring-2 border-red-500 rounded-lg sm:text-sm focus:border-red-500 focus:ring-red-500 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400" placeholder="Enter your email">
+            <x-input label="Stock" type="number" wire:model="product.stock" :required="true"
+                placeholder="Enter product stocks" :error="$errors->first('product.stock')" />
 
-                    <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
-                        <svg class="shrink-0 size-4 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" x2="12" y1="8" y2="12"></line>
-                            <line x1="12" x2="12.01" y1="16" y2="16"></line>
-                        </svg>
-                    </div>
-                </div>
-
-                <p class="text-sm text-red-600 mt-2" id="name-helper">
-                    Please enter a valid email address.
-                </p>
-            </div>
+            <x-input label="Price" type="number" wire:model="product.price" :required="true"
+                placeholder="Enter product prices" :error="$errors->first('product.price')" />
         </div>
 
         <x-slot name="extendedAction">
