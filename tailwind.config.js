@@ -9,6 +9,7 @@ export default {
         './resources/**/*.js',
         './resources/**/*.vue',
         'node_modules/preline/dist/*.js',
+        './public/**/*.js',
     ],
     theme: {
         extend: {
@@ -18,4 +19,5 @@ export default {
         },
     },
     plugins: [],
+    darkMode: 'false',
 };
