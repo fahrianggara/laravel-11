@@ -3,13 +3,16 @@
     $actionText = $editing ? 'Update Product' : 'Create Product';
     $title = $editing ? 'Edit Product' : 'Create Product';
     $required = $editing ? false : true;
+    $src = (is_string($image) ? getFile($image) : $image)
+        ? Storage::disk('public')->url("livewire-tmp/{$image->getFilename()}")
+        : null;
 @endphp
 
 <div>
     <x-modal id="modal-product" :title="$title">
         <div class="space-y-4">
             <x-file-upload wire:model="image" accept=".jpg,.jpeg,.png"
-                :error="$errors->first('image')" :required="$required" />
+                :src="$src" :error="$errors->first('image')" :required="$required" />
 
             <x-input label="Name" wire:model="name" :required="$required"
                 placeholder="Enter product name" :error="$errors->first('name')" />

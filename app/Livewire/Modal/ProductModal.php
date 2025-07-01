@@ -74,6 +74,18 @@ class ProductModal extends Component
      */
     public function close()
     {
+        $this->reset([
+            'editing',
+            'product_id',
+            'name',
+            'slug',
+            'description',
+            'price',
+            'stock',
+            'image',
+        ]);
+
+        $this->resetErrorBag();
         $this->dispatch('modal:hide');
     }
 }
