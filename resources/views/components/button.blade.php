@@ -31,6 +31,8 @@
 
 <button
     type="{{ $type }}"
+    wire:loading.attr="disabled"
+    wire:loading.class="opacity-50 cursor-not-allowed"
     @if($disabled) disabled @endif
     {{ $attributes->merge(['class' => $computedClasses]) }}
 >

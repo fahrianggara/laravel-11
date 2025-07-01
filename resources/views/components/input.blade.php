@@ -34,10 +34,10 @@
             max="{{ $type === 'number' ? 999999 : null }}"
             {{ $required ? 'required' : '' }}
             {{ $attributes->class([
-                'py-2.5 px-4 block w-full outline-none rounded-lg sm:text-sm dark:bg-neutral-800 dark:text-neutral-400',
+                'py-2.5 px-4 block w-full outline-none rounded-lg sm:text-sm dark:bg-neutral-800 dark:text-neutral-400 border',
                 $error
                     ? 'border-red-500 focus:ring-2 focus:border-red-500 focus:ring-red-500 dark:border-red-500'
-                    : 'border-gray-300 border focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:border-neutral-700',
+                    : 'border-gray-300  focus:border-blue-500 focus:ring-2 focus:ring-blue-500 dark:border-neutral-700',
             ]) }}
         />
 

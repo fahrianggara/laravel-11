@@ -27,7 +27,10 @@
             {{ $label }}
         </label>
 
-        <input type="file" accept="{{ $attributes->get('accept', 'image/*') }}"
+        <input id="{{ $name ? Str::slug($name) : 'file-upload' }}"
+            type="file"
+            accept="{{ $attributes->get('accept', 'image/*') }}"
+            {{ $required ? 'required' : '' }}
             {{ $attributes->class([
                 'mt-2 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold
                 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100

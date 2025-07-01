@@ -17,10 +17,17 @@
             </div>
 
             <div class="flex justify-end gap-x-2 py-3 px-4 border-t border-gray-200 dark:border-neutral-700">
-                <x-button type="button" wire:click="{{ $closeEvent }}"
-                    class="py-2 px-3 text-sm font-medium rounded-lg border border-gray-200 bg-white hover:bg-gray-50 dark:bg-neutral-800 dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700">
-                    <x-text-loading :text="$closeText" iconColor="text-[#000]" class="text-[#000]" />
-                </x-button>
+                <div wire:loading>
+                    <x-button class="border border-gray-200 bg-white hover:bg-gray-50">
+                        <x-text-loading text="Loading" iconColor="text-[#000]" class="text-[#000]" />
+                    </x-button>
+                </div>
+
+                <div wire:loading.remove>
+                    <x-button wire:click="{{ $closeEvent }}" class="border border-gray-200 bg-white hover:bg-gray-50">
+                        <x-text-loading :text="$closeText" iconColor="text-[#000]" class="text-[#000]" />
+                    </x-button>
+                </div>
 
                 @isset($actions)
                     {{ $actions }}

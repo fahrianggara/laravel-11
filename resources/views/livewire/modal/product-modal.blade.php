@@ -1,24 +1,33 @@
+@php
+    $action = $editing ? 'update' : 'store';
+    $actionText = $editing ? 'Update Product' : 'Create Product';
+    $title = $editing ? 'Edit Product' : 'Create Product';
+    $required = $editing ? false : true;
+@endphp
+
 <div>
-    <x-modal id="modal-product" title="Create Product">
+    <x-modal id="modal-product" :title="$title">
         <div class="space-y-4">
-            <x-file-upload wire:model="product.image" accept=".jpg,.jpeg,.png"
-                :error="$errors->first('product.image')" :required="true" />
+            <x-file-upload wire:model="image" accept=".jpg,.jpeg,.png"
+                :error="$errors->first('image')" :required="$required" />
 
-            <x-input label="Name" wire:model="product.name" :required="true"
-                placeholder="Enter product name" :error="$errors->first('product.name')" />
+            <x-input label="Name" wire:model="name" :required="$required"
+                placeholder="Enter product name" :error="$errors->first('name')" />
 
-            <x-input label="Stock" type="number" wire:model="product.stock" :required="true"
-                placeholder="Enter product stocks" :error="$errors->first('product.stock')" />
+            <x-input label="Stock" type="number" wire:model="stock" :required="$required"
+                placeholder="Enter product stocks" :error="$errors->first('stock')" />
 
-            <x-input label="Price" type="number" wire:model="product.price" :required="true"
-                placeholder="Enter product prices" :error="$errors->first('product.price')" />
+            <x-input label="Price" type="number" wire:model="price" :required="$required"
+                placeholder="Enter product prices" :error="$errors->first('price')" />
 
-            <x-textarea label="Description" wire:model="product.description" :required="true"
-                placeholder="Enter product description" :error="$errors->first('product.description')" />
+            <x-textarea label="Description" wire:model="description" :required="$required"
+                placeholder="Enter product description" :error="$errors->first('description')" />
         </div>
 
         <x-slot name="actions">
-            <x-button wire:click="submit">Save changes</x-button>
+            <x-button wire:click="{{ $action }}">
+                <x-text-loading :text="$actionText" />
+            </x-button>
         </x-slot>
     </x-modal>
 
