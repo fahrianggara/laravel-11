@@ -1,5 +1,5 @@
 <div id="{{ $id }}"
-    class=" size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto bg-black/40 transition-opacity"
+    class="hidden size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto bg-black/40 transition-opacity"
     role="dialog" tabindex="-1" aria-labelledby="{{ $id }}-label" wire:ignore.self>
 
     <div class="{{ $size }} m-3 min-h-[calc(100%-56px)] flex items-center">
@@ -17,11 +17,10 @@
             </div>
 
             <div class="flex justify-end gap-x-2 py-3 px-4 border-t border-gray-200 dark:border-neutral-700">
-                <button type="button" wire:click="{{ $closeEvent }}"
-                    class="py-2 px-3 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 dark:bg-neutral-800 dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700">
-
-                    <x-text-loading :text="$closeText" color="text-[#000]" />
-                </button>
+                <x-button type="button" wire:click="{{ $closeEvent }}"
+                    class="py-2 px-3 text-sm font-medium rounded-lg border border-gray-200 bg-white hover:bg-gray-50 dark:bg-neutral-800 dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700">
+                    <x-text-loading :text="$closeText" iconColor="text-[#000]" class="text-[#000]" />
+                </x-button>
 
                 @isset($actions)
                     {{ $actions }}
