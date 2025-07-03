@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Modal;
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -48,7 +49,7 @@ class ProductModal extends Component
         return [
             'name'        => 'required|string|max:100|unique:products,name,' . $this->product_id,
             'description' => 'required|string|max:500|min:10',
-            'price'       => 'required|numeric|min:0|max:999999.99',
+            'price'       => 'required|numeric|min:0',
             'stock'       => 'required|integer|min:0|max:999999',
             'image'       => $this->editing && is_string($this->image)
                 ? 'nullable' : 'required|image|max:5120|mimes:jpeg,png,jpg',
@@ -73,6 +74,25 @@ class ProductModal extends Component
     public function store()
     {
         $this->validate();
+
+        // Upload image and return the path
+        $image = uploadImage($this->image, 'products');
+
+        // Create a new product
+        Product::create([
+            'name'        => $this->name,
+            'slug'        => slug($this->name),
+            'description' => $this->description,
+            'price'       => $this->price,
+            'stock'       => $this->stock,
+            'image'       => $image,
+        ]);
+
+        $this->close();
+        $this->dispatch('product:success', // <-- send event to Products component
+            type: 'success',
+            message: 'Product created successfully!'
+        );
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Product as ProductModel;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\WithPagination;
 
@@ -29,12 +30,15 @@ class Products extends Component
      * @return void
      */
     #[Title('Products')]
+    #[On('product:success')]
     public function render()
     {
         $products = ProductModel::query()
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        return view('livewire.products');
+        return view('livewire.products', [
+            'products' => $products,
+        ]);
     }
 }

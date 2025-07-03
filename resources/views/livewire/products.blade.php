@@ -11,20 +11,36 @@
             </button>
         </div>
 
-        <x-table :headers="['Product name', 'Description', 'Stock', 'Price', 'Image', 'Actions']">
-            <tr class="bg-gray-50 border-b border-gray-200">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">Silver</td>
-                <td class="px-6 py-4">Laptop</td>
-                <td class="px-6 py-4">$2999</td>
-                <td class="px-6 py-4">awd</td>
-                <td class="px-6 py-4 flex space-x-4">
-                    <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-                    <a href="#" class="font-medium text-red-600 hover:underline">Delete</a>
-                </td>
-            </tr>
+        <x-table headers="Product name, Description, Stock, Price, Image, Actions">
+            @forelse ($products as $product)
+                <tr class="bg-gray-50 border-b border-gray-200">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {{ $product->name }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ $product->description }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $product->stock }}
+                    </td>
+                    <td class="px-6 py-4">
+                        Rp{{ number_format($product->price, 0, ',', '.') }}
+                    </td>
+                    <td class="px-6 py-4">
+                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-[100px] object-contain">
+                    </td>
+                    <td class="px-6 py-4 flex space-x-4 my-auto h-auto">
+                        <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
+                        <a href="#" class="font-medium text-red-600 hover:underline">Delete</a>
+                    </td>
+                </tr>
+            @empty
+                <tr class="bg-white border-b hover:bg-gray-50">
+                    <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+                        Hmm.. No products found.
+                    </td>
+                </tr>
+            @endforelse
         </x-table>
     </div>
 
