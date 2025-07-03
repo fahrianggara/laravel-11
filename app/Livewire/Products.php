@@ -13,6 +13,8 @@ class Products extends Component
 {
     use WithPagination;
 
+    public $search = '';
+
     /**
      * Update the product
      *
@@ -35,7 +37,10 @@ class Products extends Component
     {
         $products = ProductModel::query()
             ->orderBy('created_at', 'desc')
-            ->paginate(10);
+            ->when($this->search, function ($query) {
+                $query->where('name', 'like', '%' . $this->search . '%')
+                    ->orWhere('description', 'like', '%' . $this->search . '%');
+            })->paginate(10);
 
         return view('livewire.products', [
             'products' => $products,

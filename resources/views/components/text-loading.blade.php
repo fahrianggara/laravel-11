@@ -1,9 +1,10 @@
 @props([
     'iconColor' => 'text-white',
+    'target' => '',
 ])
 
 <div>
-    <div wire:loading>
+    <div wire:loading wire:target="{{ $target }}">
         <svg class="animate-spin h-5 w-5 {{ $iconColor }} mx-auto mb-0" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -12,7 +13,8 @@
         </svg>
     </div>
 
-    <div wire:loading.remove {{ $attributes->merge(['class' => '']) }}>
+    <div wire:loading.remove wire:target="{{ $target }}" {{ $attributes->merge(['class' => '']) }}>
         {!! $text !!}
     </div>
 </div>
+

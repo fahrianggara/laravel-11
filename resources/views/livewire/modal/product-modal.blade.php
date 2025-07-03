@@ -29,7 +29,7 @@
 
         <x-slot name="actions">
             <x-button wire:click="{{ $action }}">
-                <x-text-loading :text="$actionText" />
+                <x-text-loading :text="$actionText" target="update, store" />
             </x-button>
         </x-slot>
     </x-modal>
