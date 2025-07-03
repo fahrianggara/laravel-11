@@ -12,7 +12,7 @@
                 </div>
             @endif
 
-            <div class="p-4 overflow-y-auto max-h-[50vh] text-gray-800 dark:text-neutral-400">
+            <div class="p-4 overflow-y-auto max-h-[70vh] text-gray-800 dark:text-neutral-400">
                 {{ $slot }}
             </div>
 
